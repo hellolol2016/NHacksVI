@@ -45,13 +45,28 @@ function ready(){
 //pushes the location to database
 document.getElementById("submit").onclick = function(){
   if(ready()){
-      database.ref("userinput").push({
-          username : username,
-          loc : place,
-          type:items
+      database.ref("locations & items").push({
+          name : username,
+          location : place,
+          type : items
       })
       
   }
   document.querySelector('#location').value="";
-  
+  document.querySelector('#items').value="";
 }
+
+
+document.addEventListener("keyup", function(event) {
+  if (event.key === 'Enter') {
+      if(ready()){
+          database.ref("locations & items").push({
+              name : username,
+              location : place,
+              type : items             
+          });
+      }
+      document.querySelector('#location').value="";
+      document.querySelector('#items').value="";
+  }
+});
