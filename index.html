@@ -3,8 +3,16 @@
   <head>
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script src="scripts.js"></script>
+    
   </head>
   <body>
     <div id="map"></div>
@@ -14,5 +22,6 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7SK2BBMhJ9SUnxYZQW4Bd_gpc-4XCum0&callback=initMap&libraries=&v=weekly"
       async
     ></script>
+    <script src="scripts.js"></script>
   </body>
 </html>
