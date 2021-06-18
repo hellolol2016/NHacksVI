@@ -17,6 +17,14 @@
   <body>
     <div id="map"></div>
 
+    <div class="inputGroup">
+      <input id="name" class="textbox" type="text" placeholder="Your Name" autocomplete="off"></input>
+      <input id="location" class="textbox" type="text" placeholder="Desired Location" autocomplete="off"></input>
+      <input id="items" class="textbox" type="text" placeholder="Items To Recycle " autocomplete="off"></input>
+      <button id="submit" class="button">Submit</button>
+    </div>
+
+
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7SK2BBMhJ9SUnxYZQW4Bd_gpc-4XCum0&callback=initMap&libraries=&v=weekly"

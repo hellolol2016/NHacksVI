@@ -23,3 +23,34 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 let database = firebase.database();
+
+//input
+let userName, place, items;
+//checks for location and name blank, also sets up values for sending to database
+function ready(){ 
+    let Nname = document.getElementById("name").value;
+    let Nplace = document.getElementById('location').value;
+    let Nitems = document.getElementById('items').value;
+    if(Nname === "" || Nplace === "" || Nitems === ""){
+        alert("Please dont leave the name, location, or items blank!");
+        return false;
+    } else {
+        userName = Nname;
+        place = Nplace;
+        items = Nitems
+        return true;
+    }
+}
+
+//pushes the location to database
+document.getElementById("submit").onclick = function(){
+  if(ready()){
+      database.ref("location").push({
+          name : senderName,
+          value : message
+      })
+      
+  }
+  document.querySelector('#location').value="";
+  
+}
