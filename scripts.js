@@ -25,7 +25,7 @@ firebase.analytics();
 let database = firebase.database();
 
 //input
-let userName, place, items;
+let username, place, items;
 //checks for location and name blank, also sets up values for sending to database
 function ready(){ 
     let Nname = document.getElementById("name").value;
@@ -35,7 +35,7 @@ function ready(){
         alert("Please dont leave the name, location, or items blank!");
         return false;
     } else {
-        userName = Nname;
+        username = Nname;
         place = Nplace;
         items = Nitems
         return true;
@@ -45,9 +45,10 @@ function ready(){
 //pushes the location to database
 document.getElementById("submit").onclick = function(){
   if(ready()){
-      database.ref("location").push({
-          name : senderName,
-          value : message
+      database.ref("userinput").push({
+          username : username,
+          loc : place,
+          type:items
       })
       
   }
