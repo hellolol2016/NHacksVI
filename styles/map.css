@@ -8,4 +8,12 @@
 
 #item-list{
   height:400px;
+  overflow-y:scroll;
+  width:400px;
+}
+
+#submit, #done{
+  width:100px;
+  height:40px;
+  font-size:16px;
 }

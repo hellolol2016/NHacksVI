@@ -1,8 +1,41 @@
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+let storage = window.sessionStorage;
+var firebaseConfig = {
+    apiKey: "AIzaSyBC1wJWfMgKxG99mUxn4YHkQVS_-MnBx_0",
+    authDomain: "recy-dc387.firebaseapp.com",
+    projectId: "recy-dc387",
+    storageBucket: "recy-dc387.appspot.com",
+    messagingSenderId: "205601819575",
+    appId: "1:205601819575:web:a0f5e587d1036ccd073632",
+    measurementId: "G-RL5PSZZ9CL"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+let user, item;
+
+//checks for password and name blank, also sets up values for sending to database
+function ready(){ 
+    let Nname = document.getElementById("name").value;
+    let Nitem = document.getElementById('items').value;
+    if(Nname === "" || Nitem === ""){
+        alert("You must fill out all fields!");
+        return false;
+    } else {
+        user = Nname;
+        item = Nitem;
+        return true;
+    }
+}
+
+let database = firebase.database();
 
 
   function initMap() {
 	var mapOptions = {
-		zoom: 12,
+		zoom: 3,
 		center: new google.maps.LatLng(37.0902, -95.7129),
 		mapTypeId: 'roadmap'
 	};
@@ -90,39 +123,11 @@
 
 }
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-    apiKey: "AIzaSyBC1wJWfMgKxG99mUxn4YHkQVS_-MnBx_0",
-    authDomain: "recy-dc387.firebaseapp.com",
-    projectId: "recy-dc387",
-    storageBucket: "recy-dc387.appspot.com",
-    messagingSenderId: "205601819575",
-    appId: "1:205601819575:web:a0f5e587d1036ccd073632",
-    measurementId: "G-RL5PSZZ9CL"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-let database = firebase.database();
+
 
 //https://maps.googleapis.com/maps/api/place/textsearch/xml?query=tennis+court+near+92618s&key=AIzaSyB7SK2BBMhJ9SUnxYZQW4Bd_gpc-4XCum0
 
-let user, item;
-let storage = window.sessionStorage;
-//checks for password and name blank, also sets up values for sending to database
-function ready(){ 
-    let Nname = document.getElementById("name").value;
-    let Nitem = document.getElementById('items').value;
-    if(Nname === "" || Nitem === ""){
-        alert("You must fill out all fields!");
-        return false;
-    } else {
-        user = Nname;
-        item = Nitem;
-        return true;
-    }
-}
+
 
 //pushes the location to database
 document.getElementById("submit").onclick = function(){
@@ -139,10 +144,13 @@ document.getElementById("submit").onclick = function(){
         document.querySelector('#items').value="";
     }
   }
+  
+  document.querySelector('#name').value=storage.getItem('name');
 
   document.addEventListener("keyup", function(event) {
     if (event.key === 'Enter') {
         if(ready()){
+            storage.setItem('name', user);
             console.log("sending")
             database.ref("user items/" + user).push({
               user : user,
@@ -150,14 +158,15 @@ document.getElementById("submit").onclick = function(){
 
             })
             console.log("send info");
-
+            console.log(storage.getItem('name'));
             document.querySelector('#items').value="";
         }
     }
   });
 
   let items = document.querySelector("#item-list");
-  let prompt = `user items/${storage.getItem('name').trim()}`
+  username = storage.getItem('name').trim();
+  let prompt = `user items/${username}`
   database.ref(prompt).on('child_added', function(item){
     user = item.val().user;
     let value = item.val().item;
@@ -174,11 +183,30 @@ document.getElementById("submit").onclick = function(){
     div.appendChild(span);
     div.appendChild(p);
     items.appendChild(div);
-      
+    
   });
 
 const done = document.querySelector("#done");
 done.addEventListener('click',function(x){
-    console.log(thisNum);
-    database.ref("user items/"+itemNum).remove();
+    database.ref("user items/"+username).remove();
+    
 })
+
+database.ref(prompt).on('child_removed', function(item){
+    user = item.val().user;
+    let value = item.val().item;
+    console.log(value);
+
+    let span = document.createElement('span');
+    span.innerHTML = user;
+    
+    let div = document.createElement("div");
+    let p = document.createElement("p");
+    p.innerHTML = value;
+
+
+    div.appendChild(span);
+    div.appendChild(p);
+    items.appendChild(div);
+    
+  });
