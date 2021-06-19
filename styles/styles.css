@@ -1,14 +1,28 @@
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-       #map {
-        height: 100%;
-      }
-      
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 600px;
-        width:600px;
-        margin: 0;
-        padding: 0;
-      }
+/* ------------------------BODY------------------------- */
+h1 {
+    font-family:'Questrial', sans-serif;
+    font-weight: 1000;
+    font-size: 40px;
+}
+
+h3{
+    font-family:'roboto mono', sans-serif;
+}
+
+
+/* -------------------------HEADING--------------------- */
+#logo { 
+    display:inline-block; 
+    height:100px;
+} 
+
+#heading {
+    display:inline-block;
+    margin-right:10px;
+}
+
+
+header{
+    display:flex;
+    margin-left: 25px;
+}

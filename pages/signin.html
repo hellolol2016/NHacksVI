@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Recy.cl</title>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+
+
         <link rel="stylesheet" type="text/css" href="../styles/signin.css" />
 
     </head>
     <body>
-        <div class="signUp">
+        <div class="signIn">
             <input id="username" class="textbox" type="text" placeholder="Username" autocomplete="off"></input>
             <input id="password" class="textbox" type="text" placeholder="Password" autocomplete="off"></input>
-            <button id="enter" class="button">Enter</button>
+            <button id="enter" class="button" value="go to map">Enter</button>
         </div>
 
 

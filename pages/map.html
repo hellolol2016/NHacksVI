@@ -15,21 +15,25 @@
     
   </head>
   <body>
-    <div id="map"></div>
-
     <div class="inputGroup">
       <input id="name" class="textbox" type="text" placeholder="Your Name" autocomplete="off"></input>
-      <input id="location" class="textbox" type="text" placeholder="Desired Location" autocomplete="off"></input>
       <input id="items" class="textbox" type="text" placeholder="Items To Recycle " autocomplete="off"></input>
       <button id="submit" class="button">Submit</button>
     </div>
+    <div id="map"></div>
 
+    <div id="item-list">
+
+    </div>
+
+    <p class="note">As our database is manually created, you may not find a recycling 
+      service near your location as of right now, we're sorry for the inconvenience</p>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7SK2BBMhJ9SUnxYZQW4Bd_gpc-4XCum0&callback=initMap&libraries=&v=weekly"
       async
     ></script>
-    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/map.js"></script>
   </body>
 </html>

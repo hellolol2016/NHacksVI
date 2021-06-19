@@ -19,7 +19,7 @@ let database = firebase.database();
 let username, password, zipcode;
 //checks for password and name blank, also sets up values for sending to database
 function ready(){ 
-    let Nname = document.getElementById("name").value;
+    let Nname = document.getElementById("username").value;
     let Npassword = document.getElementById('password').value;
     let Nzipcode = document.getElementById('zipcode').value;
     if(Nname === "" || Npassword === "" || Nzipcode === ""){
@@ -36,30 +36,39 @@ function ready(){
 //pushes the location to database
 document.getElementById("submit").onclick = function(){
     if(ready()){
+        console.log("sending")
         database.ref("user signup info").push({
             username : username,
             password : password,
             zip : zipcode
         })
+        console.log("send info");
+
+        document.querySelector('#username').value="";
+        document.querySelector('#password').value="";
+        document.querySelector('#zipcode').value="";
+        setTimeout(() => { self.location = "index.html"; }, 1);
         
     }
-    document.querySelector('#username').value="";
-    document.querySelector('#password').value="";
-    document.querySelector('#zipcode').value="";
+
+
   }
 
 document.addEventListener("keyup", function(event) {
     if (event.key === 'Enter') {
         if(ready()){
+            console.log("sending")
             database.ref("user signup info").push({
                 username : username,
                 password : password,
                 zip : zipcode
             })
-            
+            console.log("send info");
+
+            document.querySelector('#username').value="";
+            document.querySelector('#password').value="";
+            document.querySelector('#zipcode').value="";
+            setTimeout(() => { self.location = "index.html"; }, 1);
         }
-        document.querySelector('#username').value="";
-        document.querySelector('#password').value="";
-        document.querySelector('#zipcode').value="";
     }
 });

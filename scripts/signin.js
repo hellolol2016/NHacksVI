@@ -19,7 +19,7 @@ let database = firebase.database();
 let username, password;
 //checks for password and name blank, also sets up values for sending to database
 function ready(){ 
-    let Nname = document.getElementById("name").value;
+    let Nname = document.getElementById("username").value;
     let Npassword = document.getElementById('password').value;
     if(Nname === "" || Npassword === ""){
         alert("You must fill out all fields!");
@@ -34,26 +34,33 @@ function ready(){
 //pushes the location to database
 document.getElementById("enter").onclick = function(){
     if(ready()){
+        console.log("sending");
         database.ref("user sign-in").push({
             username : username,
             password : password,
         })
-        
+        console.log("Send info");
+
+        document.querySelector('#username').value="";
+        document.querySelector('#password').value="";
+        setTimeout(() => { self.location = "map.html"; }, 1);
     }
-    document.querySelector('#username').value="";
-    document.querySelector('#password').value="";
 }
 
 document.addEventListener("keyup", function(event) {
     if (event.key === 'Enter') {
         if(ready()){
+            console.log("seding");
             database.ref("user sign-in").push({
                 username : username,
                 password : password,
             })
-            
+            console.log("send info");
+
+            document.querySelector('#username').value="";
+            document.querySelector('#password').value="";
+            setTimeout(() => { self.location = "map.html"; }, 1);
         }
-        document.querySelector('#username').value="";
-        document.querySelector('#password').value="";
+
     }
 });
