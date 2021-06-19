@@ -32,22 +32,30 @@ function ready(){
         return true;
     }
 }
+// let id;
+// var ref = firebase.database().ref("user signup info");
+// ref.once("value")
+//   .then(function(snapshot) {
+//     var Nid = snapshot.numChildren(); // 1 ("name")
+//     id = Nid;
+//   });
 
 //pushes the location to database
 document.getElementById("submit").onclick = function(){
     if(ready()){
+
         console.log("sending")
-        database.ref("user signup info").push({
+        database.ref(`user signup info/` + username).set({
             username : username,
             password : password,
             zip : zipcode
         })
         console.log("send info");
-
+        
         document.querySelector('#username').value="";
         document.querySelector('#password').value="";
         document.querySelector('#zipcode').value="";
-        setTimeout(() => { self.location = "index.html"; }, 1);
+        setTimeout(() => { self.location = "index.html"; }, 500);
         
     }
 
@@ -58,7 +66,7 @@ document.addEventListener("keyup", function(event) {
     if (event.key === 'Enter') {
         if(ready()){
             console.log("sending")
-            database.ref("user signup info").push({
+            database.ref(`user signup info/`+username).set({
                 username : username,
                 password : password,
                 zip : zipcode
@@ -68,7 +76,7 @@ document.addEventListener("keyup", function(event) {
             document.querySelector('#username').value="";
             document.querySelector('#password').value="";
             document.querySelector('#zipcode').value="";
-            setTimeout(() => { self.location = "index.html"; }, 1);
+            setTimeout(() => { self.location = "index.html"; }, 500);
         }
     }
 });

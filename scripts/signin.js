@@ -43,7 +43,17 @@ document.getElementById("enter").onclick = function(){
 
         document.querySelector('#username').value="";
         document.querySelector('#password').value="";
-        setTimeout(() => { self.location = "map.html"; }, 1);
+
+        ref = firebase.database(); 
+        ref.child("user signup info").orderByChild("ID").equalTo(username).once("password",snapshot => {
+            if (snapshot.exists()){
+                setTimeout(() => { self.location = "map.html"; }, 1);
+            } else {
+                //incorrect password, show error message
+            }
+        });
+
+        
     }
 }
 
