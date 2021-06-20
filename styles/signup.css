@@ -1,0 +1,57 @@
+/* -------------------------------HEADER------------------------- */
+
+#logo { 
+    display:inline-block; 
+    height:100px;
+} 
+
+h1 {
+    font-family:'Questrial', sans-serif;
+    font-weight: 1000;
+    font-size: 40px;
+}
+
+#heading {
+    display:inline-block;
+    margin-right:10px;
+}
+
+
+header{
+    display:flex;
+    margin-left: 25px;
+    font-family:'Questrial', sans-serif;
+}
+
+
+
+/*-------------------------------------INPUT FIELDS-------------*/
+.sign-up{
+    position: absolute; 
+    left: 25%;  
+    width: 50%; 
+    height: 750px; 
+    background: rgb(240, 240, 240); 
+    border: 4px solid rgb(220, 220, 220);
+    border-radius: 5px;
+}
+
+
+.textbox {
+    display: block;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+    position: relative;
+    width: 30%;
+    height: 20%;
+    left: 40%;
+  }
+
+.redirect{
+    position: relative;
+    width: 50%;
+    height: 20%;
+    left: 35%;
+}
