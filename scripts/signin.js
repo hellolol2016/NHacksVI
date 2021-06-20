@@ -45,8 +45,8 @@ document.getElementById("enter").onclick = function(){
         document.querySelector('#password').value="";
 
         ref = firebase.database(); 
-        ref.child("user signup info").orderByChild("ID").equalTo(username).once("password",snapshot => {
-            if (snapshot.equals(password)){
+        ref.child("user signup info").orderByChild("name").equalTo(username).once("password",snapshot => {
+            if (snapshot.contains(password)){
                 setTimeout(() => { self.location = "map.html"; }, 1);
             } else {
                 //incorrect password, show error message
