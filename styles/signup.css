@@ -26,11 +26,20 @@ header{
 
 
 /*-------------------------------------INPUT FIELDS-------------*/
+.title {
+    text-align: center;
+    font-size: 120px;
+}
+
+
+
+/*----------------------INPUT FIELDS-----------------------*/
 .sign-up{
     position: absolute; 
     left: 25%;  
     width: 50%; 
     height: 750px; 
+    height: 700px; 
     background: rgb(240, 240, 240); 
     border: 4px solid rgb(220, 220, 220);
     border-radius: 5px;
@@ -47,6 +56,11 @@ header{
     width: 30%;
     height: 20%;
     left: 40%;
+    width: 50%;
+    height: 5%;
+    left: 10%;
+    top: 15%;
+    font-size: 25px;
   }
 
 .redirect{
@@ -54,4 +68,37 @@ header{
     width: 50%;
     height: 20%;
     left: 35%;
+
+    font-family: 'questrial';
+    width: 50%;
+    height: 20%;
+    left: 35%;
+    top: 70%
 }
+
+#username {
+    position: relative;
+    top: 10%;
+}
+
+#password {
+    position: relative;
+    top: 30%;
+}
+
+#zipcode {
+    position: relative;
+    top: 50%;
+}
+  
+
+
+
+
+
+
+  /* -------------------------BACKGROUND-------------------- */
+  body{
+    background-color: rgb(223, 255, 223);
+    font-family: 'questrial';
+  }

@@ -79,7 +79,7 @@ h2{
     font-size: 80px;
     position:relative;
     width:50%;
-    left:10%;
+    left:25%;
     right:25%;
 }
 
@@ -140,6 +140,10 @@ header{
     left: 15%;
     height: 50px;
     width: 100px;
+    left: 65%;
+    height: 50px;
+    width: 100px;
+    margin-top: 20px;
     font-size: 15px;
     font-family:'questrial', sans-serif;
 }
@@ -191,4 +195,4 @@ header{
 }
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
   box-shadow: 0 0 8px green;
-}commit -a -m "stuf"
+}
